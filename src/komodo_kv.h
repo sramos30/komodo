@@ -106,7 +106,7 @@ void komodo_kvupdate(uint8_t *opretbuf,int32_t opretlen,uint64_t value)
     key = &opretbuf[13];
     if ( keylen+13 > opretlen )
     {
-        printf("komodo_kvupdate: keylen.%d + 13 > opretlen.%d\n",keylen,opretlen);
+        //fprintf("komodo_kvupdate: keylen.%d + 13 > opretlen.%d\n",keylen,opretlen);
         return;
     }
     valueptr = &key[keylen];
@@ -136,7 +136,7 @@ void komodo_kvupdate(uint8_t *opretbuf,int32_t opretlen,uint64_t value)
                 {
                     if ( komodo_kvsigverify(keyvalue,keylen+refvaluesize,refpubkey,sig) < 0 )
                     {
-                        printf("komodo_kvsigverify error [%d]\n",coresize-13);
+                        fprintf(stderr, "komodo_kvsigverify error [%d]\n",coresize-13);
                         return;
                     }
                 }
@@ -188,7 +188,7 @@ void komodo_kvupdate(uint8_t *opretbuf,int32_t opretlen,uint64_t value)
             ptr->flags = flags | 1;
             portable_mutex_unlock(&KOMODO_KV_mutex);
         } //else printf("size mismatch %d vs %d\n",opretlen,coresize);
-    } 
+    }
 }
 
 #endif

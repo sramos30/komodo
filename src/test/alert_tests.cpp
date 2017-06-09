@@ -121,12 +121,12 @@ bool SignAlert(CAlert &alert)
     CKey key;
     if (!key.SetPrivKey(vchPrivKey, false))
     {
-        printf("key.SetPrivKey failed\n");
+        fprintf(stderr, "key.SetPrivKey failed\n");
         return false;
     }
     if (!key.Sign(Hash(alert.vchMsg.begin(), alert.vchMsg.end()), alert.vchSig))
     {
-        printf("SignAlert() : key.Sign failed\n");
+        fprintf(stderr, "SignAlert() : key.Sign failed\n");
         return false;
     }
     return true;
@@ -138,7 +138,7 @@ bool SignAndSerialize(CAlert &alert, CDataStream &buffer)
     // Sign
     if(!SignAlert(alert))
     {
-        printf("SignAndSerialize() : could not sign alert\n");
+        fprintf(stderr, "SignAndSerialize() : could not sign alert\n");
         return false;
     }
     // ...and save!
@@ -217,7 +217,7 @@ void GenerateAlertTests()
     if (b) {
         // Print the hex array, which will become the contents of alertTest.raw.h
         std::vector<unsigned char> vch = std::vector<unsigned char>(sBuffer.begin(), sBuffer.end());
-        printf("%s\n", HexStrArray(vch, 8).c_str());
+        fprintf(stderr, "%s\n", HexStrArray(vch, 8).c_str());
 
         // Write the data to alertTests.raw.NEW, to be copied to src/test/data/alertTests.raw
         std::ofstream outfile("alertTests.raw.NEW", std::ios::out | std::ios::binary);

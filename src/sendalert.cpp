@@ -81,9 +81,9 @@ void ThreadSendAlert()
     alert.nMaxVer       = 170002;
 
     //
-    // main.cpp: 
+    // main.cpp:
     //  1000 for Misc warnings like out of disk space and clock is wrong
-    //  2000 for longer invalid proof-of-work chain 
+    //  2000 for longer invalid proof-of-work chain
     //  Higher numbers mean higher priority
     //  4000 or higher will put the RPC into safe mode
     alert.nPriority     = 1500;
@@ -113,12 +113,12 @@ void ThreadSendAlert()
     CKey key;
     if (!key.SetPrivKey(vchPrivKey, false))
     {
-        printf("ThreadSendAlert() : key.SetPrivKey failed\n");
+        fprintf(stderr, "ThreadSendAlert() : key.SetPrivKey failed\n");
         return;
     }
     if (!key.Sign(Hash(alert.vchMsg.begin(), alert.vchMsg.end()), alert.vchSig))
     {
-        printf("ThreadSendAlert() : key.Sign failed\n");
+        fprintf(stderr, "ThreadSendAlert() : key.Sign failed\n");
         return;
     }
 
@@ -129,7 +129,7 @@ void ThreadSendAlert()
     sBuffer >> alert2;
     if (!alert2.CheckSignature(chainparams.AlertKey()))
     {
-        printf("ThreadSendAlert() : CheckSignature failed\n");
+        fprintf(stderr, "ThreadSendAlert() : CheckSignature failed\n");
         return;
     }
     assert(alert2.vchMsg == alert.vchMsg);

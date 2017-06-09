@@ -25,7 +25,7 @@ void print_number(double x) {
         y *= 10.0;
         c++;
     }
-    printf("%.*f", c, x);
+    fprintf(stderr, "%.*f", c, x);
 }
 
 void run_benchmark(char *name, void (*benchmark)(void*), void (*setup)(void*), void (*teardown)(void*), void* data, int count, int iter) {
@@ -44,13 +44,13 @@ void run_benchmark(char *name, void (*benchmark)(void*), void (*setup)(void*), v
         if (total > max) max = total;
         sum += total;
     }
-    printf("%s: min ", name);
+    fprintf(stderr, "%s: min ", name);
     print_number(min * 1000000.0 / iter);
-    printf("us / avg ");
+    fprintf(stderr, "us / avg ");
     print_number((sum / count) * 1000000.0 / iter);
-    printf("us / max ");
+    fprintf(stderr, "us / max ");
     print_number(max * 1000000.0 / iter);
-    printf("us\n");
+    fprintf(stderr, "us\n");
 }
 
 #endif
