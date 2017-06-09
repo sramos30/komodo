@@ -286,7 +286,7 @@ void komodo_notarized_update(struct komodo_state *sp,int32_t nHeight,int32_t not
     struct notarized_checkpoint *np;
     if ( notarized_height > nHeight )
     {
-        pfrintf(stderr, "komodo_notarized_update REJECT notarized_height %d > %d nHeight\n",notarized_height,nHeight);
+        fprintf(stderr, "komodo_notarized_update REJECT notarized_height %d > %d nHeight\n",notarized_height,nHeight);
         return;
     }
     portable_mutex_lock(&komodo_mutex);
