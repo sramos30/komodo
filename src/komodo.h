@@ -616,11 +616,11 @@ void komodo_connectblock(CBlockIndex *pindex,CBlock& block)
                             if ( len == 35 && scriptbuf[0] == 33 && scriptbuf[34] == 0xac )
                             {
                                 memcpy(pubkeys[numvalid++],scriptbuf+1,33);
-                                for (k=0; k<33; k++){
-                                  printf("%02x",scriptbuf[k+1]);
-                                  fflush(stdout);
-                                }
-                                fprintf(stderr, " <- new notary.[%d]\n",j-1);
+                              //  for (k=0; k<33; k++){
+                              //    printf("%02x",scriptbuf[k+1]);
+                              //    fflush(stdout);
+                              //  }
+                              //  fprintf(stderr, " <- new notary.[%d]\n",j-1);
                             }
                         }
                     }
@@ -628,8 +628,8 @@ void komodo_connectblock(CBlockIndex *pindex,CBlock& block)
                     {
                         memset(&txhash,0,sizeof(txhash));
                         komodo_stateupdate(height,pubkeys,numvalid,0,txhash,0,0,0,0,0,0,0,0,0,0);
-                        fprintf(stderr, "RATIFIED! >>>>>>>>>> new notaries.%d newheight.%d from height.%d\n",numvalid,(((height+KOMODO_ELECTION_GAP/2)/KOMODO_ELECTION_GAP)+1)*KOMODO_ELECTION_GAP,height);
-                    } else fprintf(stderr, "signedmask.%llx numvalid.%d wt.%d numnotaries.%d\n",(long long)signedmask,numvalid,bitweight(signedmask),numnotaries);
+                        //fprintf(stderr, "RATIFIED! >>>>>>>>>> new notaries.%d newheight.%d from height.%d\n",numvalid,(((height+KOMODO_ELECTION_GAP/2)/KOMODO_ELECTION_GAP)+1)*KOMODO_ELECTION_GAP,height);
+                    } //else fprintf(stderr, "signedmask.%llx numvalid.%d wt.%d numnotaries.%d\n",(long long)signedmask,numvalid,bitweight(signedmask),numnotaries); //ca333
                 }
             }
         }
