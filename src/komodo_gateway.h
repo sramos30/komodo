@@ -1474,6 +1474,6 @@ void komodo_passport_iteration()
     if ( expired == 0 && KOMODO_PASSPORT_INITDONE == 0 )
     {
         KOMODO_PASSPORT_INITDONE = 1;
-        fprintf(stderr, "done PASSPORT %s refid.%d\n",ASSETCHAINS_SYMBOL,refid);
+        //fprintf(stderr, "done PASSPORT %s refid.%d\n",ASSETCHAINS_SYMBOL,refid); //333
     }
 }

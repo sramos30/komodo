@@ -229,7 +229,7 @@ void komodo_notarysinit(int32_t origheight,uint8_t pubkeys[64][33],int32_t num)
     {
         if ( Pubkeys[i].height != 0 && origheight < hwmheight )
         {
-            fprintf(stderr, "Pubkeys[%d].height %d < %d hwmheight, origheight.%d\n",i,Pubkeys[i].height,hwmheight,origheight);
+            //fprintf(stderr, "Pubkeys[%d].height %d < %d hwmheight, origheight.%d\n",i,Pubkeys[i].height,hwmheight,origheight); //ca333
             break;
         }
         Pubkeys[i] = N;

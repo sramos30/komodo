@@ -266,7 +266,7 @@ void komodo_stateupdate(int32_t height,uint8_t notarypubs[][33],uint8_t numnotar
         }
         else if ( notarypubs != 0 && numnotaries > 0 )
         {
-            fprintf(stderr, "ht.%d func P[%d] errs.%d\n",height,numnotaries,errs);
+            //fprintf(stderr, "ht.%d func P[%d] errs.%d\n",height,numnotaries,errs); //333
             fputc('P',fp);
             if ( fwrite(&height,1,sizeof(height),fp) != sizeof(height) )
                 errs++;
@@ -445,7 +445,7 @@ int32_t komodo_voutupdate(int32_t *isratificationp,int32_t notaryid,uint8_t *scr
                 if ( k == 32 )
                 {
                     *isratificationp = 1;
-                    fprintf(stderr, "ISRATIFICATION (%s)\n",(char *)&scriptbuf[len+32*2+4]);
+                    //fprintf(stderr, "ISRATIFICATION (%s)\n",(char *)&scriptbuf[len+32*2+4]); //ca333
                 }
             }
 
@@ -596,8 +596,8 @@ void komodo_connectblock(CBlockIndex *pindex,CBlock& block)
             {
                 if ( isratification != 0 )
                 {
-                    fprintf(stderr, "%s NOTARY SIGNED.%llx numvins.%d ht.%d txi.%d notaryht.%d specialtx.%d\n",ASSETCHAINS_SYMBOL,(long long)signedmask,numvins,height,i,notarizedheight,specialtx);
-                    fprintf(stderr, "ht.%d specialtx.%d isratification.%d numvouts.%d signed.%llx numnotaries.%d\n",height,specialtx,isratification,numvouts,(long long)signedmask,numnotaries);
+                    //fprintf(stderr, "%s NOTARY SIGNED.%llx numvins.%d ht.%d txi.%d notaryht.%d specialtx.%d\n",ASSETCHAINS_SYMBOL,(long long)signedmask,numvins,height,i,notarizedheight,specialtx); //ca333
+                    //fprintf(stderr, "ht.%d specialtx.%d isratification.%d numvouts.%d signed.%llx numnotaries.%d\n",height,specialtx,isratification,numvouts,(long long)signedmask,numnotaries);
                 }
                 if ( specialtx != 0 && isratification != 0 && numvouts > 2 )
                 {
