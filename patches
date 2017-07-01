@@ -801,7 +801,7 @@ diff -crB ./.git/config ../../komodo-jl777/.git/config
   	bare = false
   	logallrefupdates = true
   [remote "origin"]
-! 	url = https://github.com/j-cimb-barker/komodo.git
+! 	url = https://github.com/ca333/komodo.git
   	fetch = +refs/heads/*:refs/remotes/origin/*
   [branch "master"]
   	remote = origin
@@ -832,7 +832,7 @@ diff -crB ./.git/logs/HEAD ../../komodo-jl777/.git/logs/HEAD
 --- ../../komodo-jl777/.git/logs/HEAD	2017-01-03 09:49:08.884507813 +0000
 ***************
 *** 1 ****
-! 0000000000000000000000000000000000000000 d03fbd981fce86504b78d2a9582e4da988d59823 joel <joel@abigail> 1483440050 +0000	clone: from https://github.com/j-cimb-barker/komodo.git
+! 0000000000000000000000000000000000000000 d03fbd981fce86504b78d2a9582e4da988d59823 joel <joel@abigail> 1483440050 +0000	clone: from https://github.com/ca333/komodo.git
 --- 1,2 ----
 ! 0000000000000000000000000000000000000000 d03fbd981fce86504b78d2a9582e4da988d59823 joel <joel@abigail> 1483436901 +0000	clone: from https://github.com/jl777/komodo.git
 ! d03fbd981fce86504b78d2a9582e4da988d59823 26ac06c4f5a6b4dc3163b36a1e5d24bfa7eccbd2 joel <joel@abigail> 1483436948 +0000	checkout: moving from master to dev
@@ -842,7 +842,7 @@ diff -crB ./.git/logs/refs/heads/master ../../komodo-jl777/.git/logs/refs/heads/
 --- ../../komodo-jl777/.git/logs/refs/heads/master	2017-01-03 09:48:21.598032424 +0000
 ***************
 *** 1 ****
-! 0000000000000000000000000000000000000000 d03fbd981fce86504b78d2a9582e4da988d59823 joel <joel@abigail> 1483440050 +0000	clone: from https://github.com/j-cimb-barker/komodo.git
+! 0000000000000000000000000000000000000000 d03fbd981fce86504b78d2a9582e4da988d59823 joel <joel@abigail> 1483440050 +0000	clone: from https://github.com/ca333/komodo.git
 --- 1 ----
 ! 0000000000000000000000000000000000000000 d03fbd981fce86504b78d2a9582e4da988d59823 joel <joel@abigail> 1483436901 +0000	clone: from https://github.com/jl777/komodo.git
 diff -crB ./.git/logs/refs/remotes/origin/HEAD ../../komodo-jl777/.git/logs/refs/remotes/origin/HEAD
@@ -850,7 +850,7 @@ diff -crB ./.git/logs/refs/remotes/origin/HEAD ../../komodo-jl777/.git/logs/refs
 --- ../../komodo-jl777/.git/logs/refs/remotes/origin/HEAD	2017-01-03 09:48:21.598032424 +0000
 ***************
 *** 1 ****
-! 0000000000000000000000000000000000000000 d03fbd981fce86504b78d2a9582e4da988d59823 joel <joel@abigail> 1483440050 +0000	clone: from https://github.com/j-cimb-barker/komodo.git
+! 0000000000000000000000000000000000000000 d03fbd981fce86504b78d2a9582e4da988d59823 joel <joel@abigail> 1483440050 +0000	clone: from https://github.com/ca333/komodo.git
 --- 1 ----
 ! 0000000000000000000000000000000000000000 d03fbd981fce86504b78d2a9582e4da988d59823 joel <joel@abigail> 1483436901 +0000	clone: from https://github.com/jl777/komodo.git
 Only in ./.git/objects/pack: pack-12e7bdf654b29f95604673fb1b3ee01a9bd52369.idx
