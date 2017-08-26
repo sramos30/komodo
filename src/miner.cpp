@@ -116,7 +116,7 @@ extern uint8_t NOTARY_PUBKEY33[33];
 uint32_t Mining_start,Mining_height;
 int32_t komodo_chosennotary(int32_t *notaryidp,int32_t height,uint8_t *pubkey33);
 int32_t komodo_is_special(int32_t height,uint8_t pubkey33[33]);
-int32_t komodo_pax_opreturn(uint8_t *opret,int32_t maxsize);
+int32_t komodo_pax_opreturn(int32_t height,uint8_t *opret,int32_t maxsize);
 uint64_t komodo_paxtotal();
 int32_t komodo_baseid(char *origbase);
 int32_t komodo_is_issuer();
@@ -402,7 +402,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
             int32_t i,opretlen; uint8_t opret[256],*ptr;
             if ( (nHeight % 60) == 0 || komodo_gateway_deposits(&txNew,(char *)"KMD",1) == 0 )
             {
-                if ( (opretlen= komodo_pax_opreturn(opret,sizeof(opret))) > 0 ) // have pricefeed
+                if ( (opretlen= komodo_pax_opreturn((int32_t)nHeight,opret,sizeof(opret))) > 0 ) // have pricefeed
                 {
                     txNew.vout.resize(2);
                     txNew.vout[1].scriptPubKey.resize(opretlen);
@@ -411,7 +411,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
                         ptr[i] = opret[i];
                     txNew.vout[1].nValue = 0;
                     //fprintf(stderr,"opretlen.%d\n",opretlen);
-                }
+                } //else printf("null opretlen for prices\n");
             }
         }
         else if ( komodo_is_issuer() != 0 )
@@ -798,7 +798,9 @@ void static BitcoinMiner()
                             if ( gpucount > j/2 )
                             {
                                 double delta;
-                                i = ((Mining_height + notaryid) % 64);
+                                if ( notaryid < 0 )
+                                    i = (rand() % 64);
+                                else i = ((Mining_height + notaryid) % 64);
                                 delta = sqrt((double)gpucount - j/2) / 2.;
                                 roundrobin_delay += ((delta * i) / 64) - delta;
                                 //fprintf(stderr,"delta.%f %f %f\n",delta,(double)(gpucount - j/3) / 2,(delta * i) / 64);
@@ -860,7 +862,7 @@ void static BitcoinMiner()
                         //     fprintf(stderr," missed target\n");
                         return false;
                     }
-                    if ( ASSETCHAINS_SYMBOL[0] == 0 && Mining_start != 0 && time(NULL) < Mining_start+roundrobin_delay )
+                    if ( /*ASSETCHAINS_SYMBOL[0] == 0 &&*/ Mining_start != 0 && time(NULL) < Mining_start+roundrobin_delay )
                     {
                         //printf("Round robin diff sleep %d\n",(int32_t)(Mining_start+roundrobin_delay-time(NULL)));
                         int32_t nseconds = Mining_start+roundrobin_delay-time(NULL);
@@ -869,7 +871,9 @@ void static BitcoinMiner()
                         MilliSleep((rand() % 1700) + 1);
                     }
                     else if ( ASSETCHAINS_SYMBOL[0] != 0 )
-                        sleep(3);
+                    {
+                        sleep(rand() % 30);
+                    }
                     KOMODO_CHOSEN_ONE = 1;
                     // Found a solution
                     SetThreadPriority(THREAD_PRIORITY_NORMAL);
